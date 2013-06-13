@@ -1,0 +1,1 @@
+ZenPacks.zenoss.CalculatedPerformance>=1.0.5

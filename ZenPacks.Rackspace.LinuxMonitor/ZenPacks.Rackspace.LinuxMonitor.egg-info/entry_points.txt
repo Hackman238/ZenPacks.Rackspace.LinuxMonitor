@@ -1,0 +1,3 @@
+[zenoss.zenpacks]
+ZenPacks.Rackspace.LinuxMonitor = ZenPacks.Rackspace.LinuxMonitor
+
