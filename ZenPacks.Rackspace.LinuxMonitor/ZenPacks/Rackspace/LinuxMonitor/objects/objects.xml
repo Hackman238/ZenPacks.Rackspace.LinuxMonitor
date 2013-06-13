@@ -1282,8 +1282,7 @@ AVERAGE
 <object id='/zport/dmd/Events/Perf/Load' module='Products.ZenEvents.EventClass' class='EventClass'>
 <property type="text" id="transform" mode="w" >
 import re
-if evt.summary.startswith('threshold of highLoad'):
-    # Extract the percent and utilization from the summary
+if device and evt.summary.startswith('threshold of highLoad') and evt.severity !=0:
     m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.message)
     currentusage = (float(m.groups()[0])) / 100
     cores = device.getCoreCount()
@@ -1294,8 +1293,7 @@ if evt.summary.startswith('threshold of highLoad'):
 </property>
 <property type="text" id="transform" mode="w" >
 import re
-if evt.summary.startswith('threshold of highLoad'):
-    # Extract the percent and utilization from the summary
+if device and evt.summary.startswith('threshold of highLoad') and evt.severity !=0:
     m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.message)
     currentusage = (float(m.groups()[0])) / 100
     cores = device.getCoreCount()
@@ -1309,12 +1307,8 @@ if evt.summary.startswith('threshold of highLoad'):
 <object id='/zport/dmd/Events/Perf/Snmp/availMemory' module='Products.ZenEvents.EventClass' class='EventClass'>
 <property type="text" id="transform" mode="w" >
 import re
-currentusage = 0
-
-# Extract the percent and utilization from the summary
-# Validate item and device really exist
-if device:
-    m = re.search("threshold of lowFreeMem not met: current value ([\d\.]+)", evt.summary)
+if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0:
+    m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.summary)
     currentusage = (float(m.groups()[0]))
     totalMem = device.hw.totalMemory * device.getFreeMemoryThresholdPercentLimit()
     limitThreshPercent = device.getFreeMemoryThresholdPercentLimitNice()
@@ -1347,12 +1341,8 @@ if device:
 </property>
 <property type="text" id="transform" mode="w" >
 import re
-currentusage = 0
-
-# Extract the percent and utilization from the summary
-# Validate item and device really exist
-if device:
-    m = re.search("threshold of lowFreeMem not met: current value ([\d\.]+)", evt.summary)
+if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0:
+    m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.summary)
     currentusage = (float(m.groups()[0]))
     totalMem = device.hw.totalMemory * device.getFreeMemoryThresholdPercentLimit()
     limitThreshPercent = device.getFreeMemoryThresholdPercentLimitNice()
