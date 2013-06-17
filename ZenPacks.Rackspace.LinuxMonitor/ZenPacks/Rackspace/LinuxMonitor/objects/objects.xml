@@ -1307,9 +1307,10 @@ if device and evt.summary.startswith('threshold of highLoad') and evt.severity !
 <object id='/zport/dmd/Events/Perf/Snmp/availMemory' module='Products.ZenEvents.EventClass' class='EventClass'>
 <property type="text" id="transform" mode="w" >
 import re
-if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0 and device.getSnmpStatus() &lt; 1:
+if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0:
     m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.summary)
     currentusage = (float(m.groups()[0]))
+    if currentusage < 1: evt._action='drop'
     totalMem = device.hw.totalMemory * device.getFreeMemoryThresholdPercentLimit()
     limitThreshPercent = device.getFreeMemoryThresholdPercentLimitNice()
 
@@ -1338,14 +1339,13 @@ if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity
         Total = totalMem
         evt.summary = "Low Memory: %3.2f B free  (min %3.2f B or %s)" % (Usage, Total, limitThreshPercent)
         evt.message = evt.summary
-elif device.getSnmpStatus() == 1:
-    evt._action='drop'
 </property>
 <property type="text" id="transform" mode="w" >
 import re
-if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0 and device.getSnmpStatus() &lt; 1:
+if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0:
     m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.summary)
     currentusage = (float(m.groups()[0]))
+    if currentusage < 1: evt._action='drop'
     totalMem = device.hw.totalMemory * device.getFreeMemoryThresholdPercentLimit()
     limitThreshPercent = device.getFreeMemoryThresholdPercentLimitNice()
 
@@ -1374,8 +1374,6 @@ if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity
         Total = totalMem
         evt.summary = "Low Memory: %3.2f B free  (min %3.2f B or %s)" % (Usage, Total, limitThreshPercent)
         evt.message = evt.summary
-elif device.getSnmpStatus() == 1:
-    evt._action='drop'
 </property>
 </object>
 </objects>
