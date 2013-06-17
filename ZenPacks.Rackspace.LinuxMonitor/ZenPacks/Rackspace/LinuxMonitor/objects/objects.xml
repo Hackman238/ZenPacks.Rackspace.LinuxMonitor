@@ -1310,6 +1310,7 @@ import re
 if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0:
     m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.summary)
     currentusage = (float(m.groups()[0]))
+    if currentusage &lt; 1.0: break
     totalMem = device.hw.totalMemory * device.getFreeMemoryThresholdPercentLimit()
     limitThreshPercent = device.getFreeMemoryThresholdPercentLimitNice()
 
@@ -1344,6 +1345,7 @@ import re
 if device and evt.summary.startswith('threshold of lowFreeMem') and evt.severity !=0:
     m = re.search("threshold of [^:]+: current value ([\d\.]+)", evt.summary)
     currentusage = (float(m.groups()[0]))
+    if currentusage &lt; 1.0: break
     totalMem = device.hw.totalMemory * device.getFreeMemoryThresholdPercentLimit()
     limitThreshPercent = device.getFreeMemoryThresholdPercentLimitNice()
 
