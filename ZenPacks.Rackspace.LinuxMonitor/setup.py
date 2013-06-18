@@ -8,7 +8,7 @@ AUTHOR = "Shane William Scott"
 LICENSE = "gplv2"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.Rackspace']
 PACKAGES = ['ZenPacks', 'ZenPacks.Rackspace', 'ZenPacks.Rackspace.LinuxMonitor']
-INSTALL_REQUIRES = ['ZenPacks.zenoss.CalculatedPerformance>=1.0.5']
+INSTALL_REQUIRES = ['ZenPacks.zenoss.CalculatedPerformance>=1.0.0']
 COMPAT_ZENOSS_VERS = ""
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
