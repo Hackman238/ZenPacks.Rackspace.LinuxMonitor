@@ -3,7 +3,7 @@ import logging
 import os
 log = logging.getLogger('zen.ZenPack.Rackspace.LinuxMonitor')
 
-import ZenPacks.Rackspace.LinuxMonitor
+#import ZenPacks.Rackspace.LinuxMonitor
 from Products.ZenModel.ZenPack import ZenPack as ZenPackBase
 from Products.ZenUtils.Utils import zenPath
 from Products.ZenModel.ZenMenu import ZenMenu
