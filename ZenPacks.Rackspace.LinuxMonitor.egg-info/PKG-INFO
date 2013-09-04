@@ -1,10 +1,10 @@
-Metadata-Version: 1.0
+Metadata-Version: 1.1
 Name: ZenPacks.Rackspace.LinuxMonitor
 Version: 1.0.0
-Summary: UNKNOWN
-Home-page: UNKNOWN
+Summary: Improved and extended standard Linux monitoring
+Home-page: http://hackman238.com
 Author: Shane William Scott
 Author-email: hackman238@gmail.com
 License: GPLv2
-Description: UNKNOWN
-Platform: UNKNOWN
+Description: See Summary
+Platform: NOARCH
